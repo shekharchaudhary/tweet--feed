@@ -10,4 +10,5 @@ export const HashtagsMainContainer = styled.button`
   border: none;
   cursor: pointer;
   margin: 0 10px 10px 0;
+  max-width: 349px;
 `;

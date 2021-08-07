@@ -1,12 +1,11 @@
 import styled from "styled-components";
+import { Button } from "./component/Button/button";
 
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid #44515c;
   margin: 200px;
-  padding: 200px;
   background: #f4f4f4;
   color: #44515c;
   @media (max-width: 960px) {
@@ -18,20 +17,28 @@ export const MainContainer = styled.div`
   }
 `;
 
-export const Title = styled.h4``;
+export const Title = styled.h4`
+  margin-top: -40px;
+  @media (max-width: 960px) {
+    margin: 40px 20px;
+    font-size: 18px;
+  }
+`;
 export const InnerContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   @media (max-width: 960px) {
     display: flex;
     flex-direction: column;
   }
 `;
 export const TweetFeedSection = styled.div`
-  width: 100%;
+  width: 40vh;
   margin-right: 30px;
   @media (max-width: 960px) {
     margin-right: 0px;
+    width: 43vh;
+    margin-bottom: 20px;
   }
 `;
 
@@ -39,14 +46,16 @@ export const HashtagSection = styled.div`
   width: 100%;
   max-width: 349px;
   height: 100%;
-  min-height: 350px;
   border-radius: 5px;
   box-shadow: 0 0 3px 2px rgb(0 0 0 / 3%);
   background: #fff;
   display: flex;
   flex-direction: column;
-  padding: 0 16px;
+  padding: 0 16px 16px;
   color: #44515c;
+  @media (max-width: 960px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const TweetContainer = styled.div`
@@ -61,4 +70,17 @@ export const TweetContainer = styled.div`
   @media (max-width: 960px) {
     width: 100%;
   }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+export const LoadMoreButtonStyled = styled(Button)`
+  border: none;
+  background: none;
+  margin-top: 50px;
+  color: #00acee;
+  font-size: 18px;
+  cursor: pointer;
 `;

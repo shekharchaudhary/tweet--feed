@@ -8,6 +8,9 @@ export const InputContainerStyled = styled.div`
   background: #fff;
   border-radius: 4px;
   margin-bottom: 20px;
+  @media (max-width: 960px) {
+    margin-left: 10px;
+  }
 `;
 
 export const InputStyled = styled.input<
