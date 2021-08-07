@@ -36,18 +36,16 @@ export const App = () => {
             <HashtagSection>
               <h4>Filter by hashtag</h4>
               <div style={{ display: "flex", flexWrap: "wrap" }}>
-                <Hashtag hashtag='codingdddd' />
+                <Hashtag hashtag='cod' />
                 <Hashtag hashtag='coding' />
-                <Hashtag hashtag='coding' />
+                <Hashtag hashtag='coddddd' />
                 <Hashtag hashtag='codingddddddd' />
-                <Hashtag hashtag='coding' />
-                <Hashtag hashtag='coding' />
-                <Hashtag hashtag='codingdddd' />
-                <Hashtag hashtag='coding' />
-                <Hashtag hashtag='coding' />
-                <Hashtag hashtag='codingddddddd' />
-                <Hashtag hashtag='coding' />
-                <Hashtag hashtag='coding' />
+                <Hashtag hashtag='cingddddddd' />
+                <Hashtag hashtag='codingd' />
+                <Hashtag hashtag='codingdddddd' />
+                <Hashtag hashtag='cddddddd' />
+                <Hashtag hashtag='codddddd' />
+                <Hashtag hashtag='codingddddd' />
               </div>
             </HashtagSection>
           )}
@@ -60,16 +58,16 @@ export const App = () => {
   '
               renderhHashtag={() => (
                 <div style={{ display: "flex", flexWrap: "wrap" }}>
+                  <Hashtag hashtag='cod' />
                   <Hashtag hashtag='codingddddddd' />
+                  <Hashtag hashtag='coddddd' />
                   <Hashtag hashtag='codingddddddd' />
-                  <Hashtag hashtag='codingddddddd' />
-                  <Hashtag hashtag='codingddddddd' />
-                  <Hashtag hashtag='codingddddddd' />
-                  <Hashtag hashtag='codingddddddd' />
-                  <Hashtag hashtag='codingddddddd' />
-                  <Hashtag hashtag='codingddddddd' />
-                  <Hashtag hashtag='codingddddddd' />
-                  <Hashtag hashtag='codingddddddd' />
+                  <Hashtag hashtag='cingddddddd' />
+                  <Hashtag hashtag='codingd' />
+                  <Hashtag hashtag='codingdddddd' />
+                  <Hashtag hashtag='cddddddd' />
+                  <Hashtag hashtag='codddddd' />
+                  <Hashtag hashtag='codingddddd' />
                 </div>
               )}
             />
@@ -124,7 +122,6 @@ export const App = () => {
                 <div style={{ display: "flex", flexWrap: "wrap" }}>
                   <Hashtag hashtag='codingddddddd' />
                   <Hashtag hashtag='codingddddddd' />
-
                   <Hashtag hashtag='codingddddddd' />
                 </div>
               )}
@@ -140,8 +137,8 @@ export const App = () => {
             <div style={{ display: "flex", flexWrap: "wrap" }}>
               <Hashtag hashtag='codingdddd' />
               <Hashtag hashtag='coding' />
-              <Hashtag hashtag='coding' />
-              <Hashtag hashtag='codingddddddd' />
+              <Hashtag hashtag='cong' />
+              <Hashtag hashtag='codddddd' />
               <Hashtag hashtag='coding' />
               <Hashtag hashtag='coding' />
               <Hashtag hashtag='codingdddd' />

@@ -37,7 +37,7 @@ export const TweetFeedSection = styled.div`
   margin-right: 30px;
   @media (max-width: 960px) {
     margin-right: 0px;
-    width: 43vh;
+    width: 100%;
     margin-bottom: 20px;
   }
 `;
@@ -66,7 +66,6 @@ export const TweetContainer = styled.div`
   background: #fff;
   display: flex;
   flex-direction: column;
-  padding: 20px;
   @media (max-width: 960px) {
     width: 100%;
   }
@@ -83,4 +82,7 @@ export const LoadMoreButtonStyled = styled(Button)`
   color: #00acee;
   font-size: 18px;
   cursor: pointer;
+  @media (max-width: 960px) {
+    margin-bottom: 30px;
+  }
 `;

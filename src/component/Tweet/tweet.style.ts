@@ -4,6 +4,9 @@ export const TweetContainer = styled.div`
   width: 100%;
   display: flex;
   padding: 10px;
+  :nth-child(even) {
+    background: #f4f4f4;
+  }
 `;
 
 export const TweetInnerContainer = styled.div`
@@ -25,6 +28,8 @@ export const TweetText = styled.p`
   flex-wrap: wrap;
   margin-right: 8px;
   width: 100%;
+  line-height: 1.4;
+  padding-right: 16px;
 `;
 export const TweetLink = styled.a`
   text-decoration: none;
