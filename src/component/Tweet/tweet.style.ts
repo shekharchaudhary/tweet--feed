@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const TweetContainer = styled.div`
   width: 100%;
   display: flex;
-  padding: 10px;
+  padding: 20px 0px 40px 10px;
   :nth-child(even) {
     background: #f4f4f4;
   }
@@ -34,4 +34,6 @@ export const TweetText = styled.p`
 export const TweetLink = styled.a`
   text-decoration: none;
   color: #00acee;
+  font-size: 15px;
+  margin-left: 5px;
 `;

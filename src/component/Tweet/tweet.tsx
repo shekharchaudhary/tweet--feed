@@ -15,20 +15,22 @@ type TweetProps = {
   tweetLink: string;
   tweetText: string;
   renderhHashtag: () => React.ReactNode;
+  id?: number;
 };
 
 export const Tweet = ({
   userName,
   tweetLink,
   tweetText,
+  id,
 
   renderhHashtag,
 }: TweetProps) => {
   return (
-    <TweetContainer>
+    <TweetContainer key={id}>
       <Avatar src=' ' />
       <TweetInnerContainer>
-        <UserNamneStyled>{userName}</UserNamneStyled>
+        <UserNamneStyled>@{userName}</UserNamneStyled>
         <TweetWapper>
           <TweetText>
             {tweetText}
