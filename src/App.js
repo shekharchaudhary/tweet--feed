@@ -24,12 +24,10 @@ import useMediaQuery from "./hooks/useMediaQuery";
 export const App = () => {
   const [searchTweet, setSearchTweet] = React.useState("");
   const tweets = useSelector((state) => state.tweetsList.tweets);
-
   const [filterTweet, setFilterTweet] = React.useState([]);
 
   //screen
   const isDesktop = useMediaQuery("(min-width: 768px)");
-
   const hashtags = useSelector((state) => state.tweetsList.hashtags);
 
   const dispatch = useDispatch();
