@@ -1,6 +1,6 @@
 # SEARCH-TWEET
 
-Search Tweet is a single page application that integrates with the Twitter API. It is created with Create React App.
+Search Tweet is a single page application that integrates with the Twitter API.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -18,4 +18,4 @@ You will also see any lint errors in the console.
 
 ### 'node server.js'
 
-Go to Server Directory from your terminal and start the server.
+Runs the backend
