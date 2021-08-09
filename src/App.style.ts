@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button } from "./component/Button/button";
+import { Input } from "./component/Input/Input";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -85,4 +86,14 @@ export const LoadMoreButtonStyled = styled(Button)`
   @media (max-width: 960px) {
     margin-bottom: 30px;
   }
+`;
+export const TagWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+export const TitleStyled = styled.h4``;
+
+export const InputStyled = styled(Input)`
+  width: 100%;
+  height: 20px;
 `;

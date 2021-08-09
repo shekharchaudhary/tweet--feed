@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useSelector, useDispatch } from "react-redux";
 import {
   MainContainer,
   Title,
@@ -9,106 +9,133 @@ import {
   TweetContainer,
   ButtonContainer,
   LoadMoreButtonStyled,
+  TagWrapper,
+  TitleStyled,
+  InputStyled,
 } from "./App.style";
 
 import { Hashtag } from "./component/Filter/Hashtag";
 import { Tweet } from "./component/Tweet/tweet";
-import { Input } from "./component/Input/Input";
-import useMediaQuery from "./hooks/useMediaQuery";
 import { Loader } from "./component/Loader/Loader";
-import { tweeterData } from "./mockData/data";
+import { fetchTweetAction } from "./action/fetchTweetAction";
+
+import useMediaQuery from "./hooks/useMediaQuery";
 
 export const App = () => {
-  //api
-  React.useEffect(() => {
-    try {
-      async function getTweetData() {
-        const url = "https://api.twitter.com/1.1/search/tweets.json";
+  const [searchTweet, setSearchTweet] = React.useState("");
+  const tweets = useSelector((state) => state.tweetsList.tweets);
 
-        const response = await fetch(url, {
-          method: "GET",
-          mode: "cors", // no-cors, *cors, same-origin
+  const [filterTweet, setFilterTweet] = React.useState([]);
 
-          headers: {
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer AAAAAAAAAAAAAAAAAAAAAI4OHgEAAAAAlbk0HSIAqcc3havrrU9j2NeAQ34%3DzJmzwHuQerd8JJ2TeuHfqwKgBt6bK4tk93w3ocBB2vPuKMF3cG",
-          },
-        });
-        return response.json(); // parses JSON response into native JavaScript objects
-      }
-
-      getTweetData();
-    } catch (err) {
-      throw new Error(err);
-    }
-  }, []);
   //screen
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const tweet = tweeterData.statuses.map((data) => data.user.id);
-  //rendering each hashtag
+
+  const hashtags = useSelector((state) => state.tweetsList.hashtags);
+
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    setFilterTweet(tweets);
+  }, [tweets]);
+
+  React.useEffect(() => {
+    dispatch(fetchTweetAction());
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    if (searchTweet.length > 3) {
+      dispatch({ type: "RESET_TWEETS" });
+      dispatch(fetchTweetAction({ q: searchTweet }));
+    }
+  }, [searchTweet, dispatch]);
+
+  const handleLoadMore = () => {
+    if (searchTweet) {
+      // dispatch({ type: "RESET_TWEETS" });
+      dispatch(fetchTweetAction({ q: searchTweet }));
+    }
+  };
+
+  const handleHashtagClick = (hash) => {
+    setFilterTweet(hashtags[hash]);
+    setSearchTweet(`#${hash}`);
+  };
+  //render each hashtag
   const renderTag = () => {
     return (
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {tweeterData.statuses.map((has, index) => (
+      <TagWrapper>
+        {Object.keys(hashtags).map((hashtag) => (
           <Hashtag
-            key={index}
-            hashtag={has.entities.hashtags.map((d) => d.text)}
+            key={hashtag}
+            hashtag={hashtag}
+            onClick={() => handleHashtagClick(hashtag)}
           />
         ))}
-      </div>
+      </TagWrapper>
     );
+  };
+
+  const handleOnChange = (event) => {
+    setSearchTweet(event.target.value);
   };
 
   return (
     <MainContainer>
-      {tweet.length === 0 ? (
-        <Loader />
-      ) : (
-        <InnerContainer>
-          <TweetFeedSection>
-            <Title>Tweet Feed</Title>
-            <Input placeholder='Search by keyword' style={{ height: "20px" }} />
-            {!isDesktop && (
-              <HashtagSection>
-                <h4>Filter by hashtag</h4>
-                {renderTag()}
-              </HashtagSection>
-            )}
+      <InnerContainer>
+        <TweetFeedSection>
+          <Title>Tweet Feed</Title>
+          <InputStyled
+            type='text'
+            placeholder='Search by keyword'
+            onChange={handleOnChange}
+            value={searchTweet}
+          />
 
-            <TweetContainer>
-              {tweeterData.statuses.map((data, index) => (
-                <Tweet
-                  key={index}
-                  userName={data.user.name}
-                  tweetLink={data.user.url}
-                  tweetText={data.user.description}
-                  renderhHashtag={() => (
-                    <div
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                      }}
-                    >
-                      {renderTag()}
-                    </div>
-                  )}
-                />
-              ))}
-
-              <ButtonContainer>
-                <LoadMoreButtonStyled>Load More</LoadMoreButtonStyled>
-              </ButtonContainer>
-            </TweetContainer>
-          </TweetFeedSection>
-          {isDesktop && (
+          {!isDesktop && (
             <HashtagSection>
-              <h4>Filter by hashtag</h4>
+              <TitleStyled>Filter by hashtag</TitleStyled>
               {renderTag()}
             </HashtagSection>
           )}
-        </InnerContainer>
-      )}
+          {filterTweet.length === 0 ? (
+            <Loader />
+          ) : (
+            <TweetContainer>
+              {filterTweet.map((data, index) => (
+                <Tweet
+                  key={index}
+                  src={data.user.profile_image_url}
+                  href={data.user.url}
+                  userName={data.user.name}
+                  tweetLink={data.user.url}
+                  tweetText={data.user.description}
+                  renderHashtag={() => (
+                    <TagWrapper>
+                      {data.entities.hashtags.map((tag, index) => (
+                        <Hashtag
+                          key={index}
+                          hashtag={tag.text}
+                          onClick={() => handleHashtagClick(tag.text)}
+                        />
+                      ))}
+                    </TagWrapper>
+                  )}
+                />
+              ))}
+              <ButtonContainer>
+                <LoadMoreButtonStyled onClick={handleLoadMore}>
+                  Load More
+                </LoadMoreButtonStyled>
+              </ButtonContainer>
+            </TweetContainer>
+          )}
+        </TweetFeedSection>
+        {isDesktop && (
+          <HashtagSection>
+            <TitleStyled>Filter by hashtag</TitleStyled>
+            {renderTag()}
+          </HashtagSection>
+        )}
+      </InnerContainer>
     </MainContainer>
   );
 };

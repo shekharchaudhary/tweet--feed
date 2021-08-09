@@ -1,5 +1,5 @@
 export const tweeterData = {
-  statuses: [
+  tweets: [
     {
       created_at: "Sun Feb 25 18:11:01 +0000 2018",
       id: 967824267948773377,
@@ -10,6 +10,14 @@ export const tweeterData = {
         hashtags: [
           {
             text: "codderrrrr",
+            indices: [19, 28],
+          },
+          {
+            text: "aaa",
+            indices: [19, 28],
+          },
+          {
+            text: "codding",
             indices: [19, 28],
           },
         ],
@@ -230,6 +238,10 @@ export const tweeterData = {
         hashtags: [
           {
             text: "mycode",
+            indices: [19, 28],
+          },
+          {
+            text: "yourCode",
             indices: [19, 28],
           },
         ],

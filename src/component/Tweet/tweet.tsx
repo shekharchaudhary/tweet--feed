@@ -14,8 +14,10 @@ type TweetProps = {
   userName: string;
   tweetLink: string;
   tweetText: string;
-  renderhHashtag: () => React.ReactNode;
+  renderHashtag: () => React.ReactNode;
   id?: number;
+  src: string;
+  href: string;
 };
 
 export const Tweet = ({
@@ -23,21 +25,24 @@ export const Tweet = ({
   tweetLink,
   tweetText,
   id,
-
-  renderhHashtag,
+  src,
+  href,
+  renderHashtag,
 }: TweetProps) => {
   return (
     <TweetContainer key={id}>
-      <Avatar src=' ' />
+      <Avatar src={src} />
       <TweetInnerContainer>
         <UserNamneStyled>@{userName}</UserNamneStyled>
         <TweetWapper>
           <TweetText>
             {tweetText}
-            <TweetLink href='hdhhdsfhhdsahfh'>{tweetLink}</TweetLink>
+            <TweetLink href={href} target='_blank'>
+              {tweetLink}
+            </TweetLink>
           </TweetText>
         </TweetWapper>
-        <div>{renderhHashtag && renderhHashtag()}</div>
+        <div>{renderHashtag && renderHashtag()}</div>
       </TweetInnerContainer>
     </TweetContainer>
   );
