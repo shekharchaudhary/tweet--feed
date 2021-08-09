@@ -21,9 +21,12 @@ export type InputProps = {
   autoFocus?: boolean;
   inputRef?: any;
   onMouseDown?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+  renderResetButton?: () => React.ReactNode;
 };
 
-export const Input: React.FC<InputProps> = ({
+export const Input: React.FC<
+  InputProps & React.HTMLAttributes<HTMLInputElement>
+> = ({
   defaultValue,
   placeholder,
   style,
@@ -38,6 +41,7 @@ export const Input: React.FC<InputProps> = ({
   autoFocus,
   autoComplete,
   onMouseDown,
+  renderResetButton,
   ...props
 }) => {
   return (
@@ -60,6 +64,7 @@ export const Input: React.FC<InputProps> = ({
         onMouseDown={onMouseDown}
         {...props}
       />
+      <div>{renderResetButton && renderResetButton()}</div>
     </InputContainerStyled>
   );
 };

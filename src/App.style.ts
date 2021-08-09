@@ -97,3 +97,10 @@ export const InputStyled = styled(Input)`
   width: 100%;
   height: 20px;
 `;
+
+export const ResetButton = styled(Button)`
+  background: none;
+  border: none;
+  padding: 20px;
+  cursor: pointer;
+`;

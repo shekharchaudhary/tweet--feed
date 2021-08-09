@@ -12,6 +12,7 @@ import {
   TagWrapper,
   TitleStyled,
   InputStyled,
+  ResetButton,
 } from "./App.style";
 
 import { Hashtag } from "./component/Filter/Hashtag";
@@ -57,6 +58,10 @@ export const App = () => {
     setFilterTweet(hashtags[hash]);
     setSearchTweet(`#${hash}`);
   };
+
+  const handleReset = () => {
+    setSearchTweet("");
+  };
   //render each hashtag
   const renderTag = () => {
     return (
@@ -86,6 +91,9 @@ export const App = () => {
             placeholder='Search by keyword'
             onChange={handleOnChange}
             value={searchTweet}
+            renderResetButton={() => (
+              <ResetButton onClick={handleReset}>X</ResetButton>
+            )}
           />
 
           {!isDesktop && (

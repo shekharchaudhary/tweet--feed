@@ -14,10 +14,10 @@ type TweetProps = {
   userName: string;
   tweetLink: string;
   tweetText: string;
-  renderHashtag: () => React.ReactNode;
   id?: number;
   src: string;
   href: string;
+  renderHashtag: () => React.ReactNode;
 };
 
 export const Tweet = ({
